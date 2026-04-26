@@ -49,7 +49,7 @@ with tab1:
             grille = generer_ticket_expert()
             etoiles = sorted(random.sample([2, 8, 3, 10, 11], 2))
             
-            # --- AJUSTEMENT : ANALYSE ÉQUILIBRE ---
+            # --- ANALYSE ÉQUILIBRE PAIR/IMPAIR ---
             nb_pairs = len([n for n in grille if n % 2 == 0])
             nb_impairs = 5 - nb_pairs
             
@@ -57,20 +57,24 @@ with tab1:
             st.warning(f"**Étoiles :** {etoiles[0]} — {etoiles[1]}")
             
             # Affichage de l'équilibre
-            st.write(f"⚖️ **Équilibre :** {nb_pairs} Pairs / {nb_impairs} Impairs")
+            st.divider()
+            st.write(f"⚖️ **Analyse de l'Équilibre :**")
+            st.write(f"Votre grille contient **{nb_pairs} Pairs** et **{nb_impairs} Impairs**.")
+            
             if nb_pairs == 0 or nb_pairs == 5:
-                st.error("⚠️ Alerte : Grille très déséquilibrée. Un rééquilibrage est conseillé.")
+                st.error("⚠️ Alerte : Grille très déséquilibrée. Un rééquilibrage est vivement conseillé.")
             elif nb_pairs == 2 or nb_pairs == 3:
-                st.info("✅ Équilibre Statistique Optimal (2/3 ou 3/2).")
+                st.info("✅ Équilibre Statistique Optimal (Mixte 2/3).")
+            else:
+                st.info("⚖️ Équilibre Correct (1/4).")
             
             st.balloons()
             
     with col2:
-        st.write("**Rappel de la Stratégie :**")
-        st.write("- **Pivot :** 23 (Confirmé Samedi)")
-        st.write("- **Piliers :** 13, 44")
-        st.write("- **Énergie Loto :** 17, 49")
-        st.write("- **Conseil Expert :** Privilégiez 2 ou 3 numéros pairs pour mardi.")
+        st.write("**Rappel de la Stratégie Mardi :**")
+        st.write("- **Pivot :** 23 (Vague de samedi)")
+        st.write("- **Piliers :** 13, 44 (Poids historique)")
+        st.write("- **Conseil :** On cherche à compenser le tirage très 'Impairs' de samedi.")
 
 with tab2:
     st.header("📊 Tableau de Convergence")
@@ -86,12 +90,12 @@ with tab3:
     col_a, col_b = st.columns(2)
     with col_a:
         st.subheader("Loto ➔ Euro")
-        st.write("Numéros du samedi à surveiller mardi :")
+        st.write("Énergie du samedi à transférer :")
         st.code("17, 22, 23, 25, 49")
     with col_b:
         st.subheader("Euro ➔ Loto")
-        st.write("Bases historiques pour le prochain Loto :")
+        st.write("Bases à garder pour le prochain Loto :")
         st.code("44, 42, 13, 19")
 
 st.divider()
-st.caption("Dernière mise à jour : Dimanche 26 Avril 2026. Basé sur le succès du système (4/5 au Loto du 25/04).")
+st.caption("Dernière mise à jour : 27 Avril 2026. Algorithme optimisé par IA.")
