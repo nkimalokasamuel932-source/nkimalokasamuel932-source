@@ -201,7 +201,8 @@ for nom, num_liste, bonus in grilles_actives:
     else:
         cols[5].button(f"⭐ {bonus[0]}", key=f"et1_{nom}", disabled=True)
         cols[6].button(f"⭐ {bonus[1]}", key=f"et2_{nom}", disabled=True)
-        
+
+
 # =====================================================================
 # PHASE 1 : LA SOURDINE INVERSÉE STRICTE (FILTRAGE STATISTIQUE)
 # =====================================================================
